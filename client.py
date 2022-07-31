@@ -18,6 +18,7 @@ class Client():
             assert False, f'socket error: {ex}'
 
     def get(self, metric_name):
+        ''' get metrics from server '''
         def _sort_metrics(metrics):
             print(metrics)
             for key, metric in metrics.items():
@@ -60,6 +61,7 @@ class Client():
             raise ClientError('problem with recieving msg')
 
     def put(self, metric_name, num, timestamp=None):
+        ''' put metrics to the server '''
         if not timestamp:
             timestamp = int(time.time())
         if type(metric_name) is not str or \
